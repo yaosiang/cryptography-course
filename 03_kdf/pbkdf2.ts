@@ -6,7 +6,7 @@ const wrongPassword: string = password.substring(1);
 const salt: string = crypto.randomBytes(16).toString('hex');
 const iteration: number = 100000;
 
-const startTIme: number = new Date().getTime();
+const startTime: number = new Date().getTime();
 const dK: string = pbkdf2Sync(password, salt, iteration);
 const endTime: number = new Date().getTime();
 
@@ -15,7 +15,7 @@ console.log(`Salt                         : ${salt}`);
 console.log(`Derived Key                  : ${pbkdf2Sync(password, salt, iteration)}`);
 console.log(`Verify with Correct Password : ${verifyPbkdf2(password, salt, dK, iteration)}`);
 console.log(`Verify with Wrong Password   : ${verifyPbkdf2(wrongPassword, salt, dK, iteration)}`);
-console.log(`It costs ${endTime - startTIme} ms`);
+console.log(`It costs ${endTime - startTime} ms`);
 
 function pbkdf2Sync(password: string, salt: string, iteration: number = 100000, keyLength: number = 64, digest: string = 'sha256'): string {
   const key = crypto.pbkdf2Sync(password, salt, iteration, keyLength, digest);

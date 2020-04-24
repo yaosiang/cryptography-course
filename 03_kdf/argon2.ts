@@ -5,7 +5,7 @@ const password: string = v4();
 const wrongPassword: string = password.substring(1);
 let hash: string;
 let endTime: number;
-const startTIme: number = new Date().getTime();
+const startTime: number = new Date().getTime();
 argon2id(password)
   .then(async (result: string) => {
     hash = result;
@@ -15,7 +15,7 @@ argon2id(password)
     console.log(`Hash                         : ${hash}`);
     console.log(`Verify with Correct Password : ${await verifyArgon2(password, hash)}`);
     console.log(`Verify with Wrong Password   : ${await verifyArgon2(wrongPassword, hash)}`);
-    console.log(`It costs ${endTime - startTIme} ms`);
+    console.log(`It costs ${endTime - startTime} ms`);
   });
 
 async function argon2id(password: string): Promise<string> {
