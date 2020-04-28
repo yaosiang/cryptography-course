@@ -1,13 +1,14 @@
 {
   "name": "cryptography-course",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample code for cryptography course",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yao-Siang Su",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/aes-js": "^3.1.1",
     "@types/bcryptjs": "^2.4.2",
@@ -27,5 +28,8 @@
     "jssha": "^3.1.0",
     "mersenne-twister": "^1.1.0",
     "uuid": "^7.0.3"
+  },
+  "engines": {
+    "node": ">= 12.0.0"
   }
 }
