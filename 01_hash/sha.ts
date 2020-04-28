@@ -5,15 +5,17 @@ import { v4 } from 'uuid';
 demo1();
 demo2();
 
-function demo1() {
+function demo1(): void {
   const data: string = v4();
   console.log(`Text     : ${data}`);
   console.log(`SHA-1    : ${sha1(data)}`);
   console.log(`SHA2-256 : ${sha256(data)}`);
-  console.log(`SHA3-256 : ${sha3(data)}`);
+  console.log(`SHA2-512 : ${sha512(data)}`);
+  console.log(`SHA3-256 : ${sha3_256(data)}`);
+  console.log(`SHA3-512 : ${sha3_512(data)}`);
 }
 
-function demo2() {
+function demo2(): void {
   const data: string = v4();
   const modifiedData: string = `@${data.substring(1)}`;
   console.log(`Text             : ${data}`);
@@ -36,8 +38,20 @@ function sha256(data: string): string {
   return shaObject.getHash('HEX');
 }
 
-function sha3(data: string): string {
+function sha512(data: string): string {
+  const shaObject = new JsSHA('SHA-512', 'TEXT');
+  shaObject.update(data);
+  return shaObject.getHash('HEX');
+}
+
+function sha3_256(data: string): string {
   const shaObject = new JsSHA('SHA3-256', 'TEXT');
+  shaObject.update(data);
+  return shaObject.getHash('HEX');
+}
+
+function sha3_512(data: string): string {
+  const shaObject = new JsSHA('SHA3-512', 'TEXT');
   shaObject.update(data);
   return shaObject.getHash('HEX');
 }
