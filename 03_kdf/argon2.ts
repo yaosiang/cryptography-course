@@ -14,15 +14,15 @@ argon2id(password)
     console.log(`Password                     : ${password}`);
     console.log(`Wrong Password               : ${wrongPassword}`);
     console.log(`Hash                         : ${hash}`);
-    console.log(`Verify with Correct Password : ${await verifyArgon2(password, hash)}`);
-    console.log(`Verify with Wrong Password   : ${await verifyArgon2(wrongPassword, hash)}`);
+    console.log(`Verify with Correct Password : ${await verifyArgon2(hash, password)}`);
+    console.log(`Verify with Wrong Password   : ${await verifyArgon2(hash, wrongPassword)}`);
     console.log(`It costs ${endTime - startTime} ms`);
   });
 
 async function argon2id(password: string): Promise<string> {
-  return argon2.hash(password, { type: argon2.argon2id});
+  return argon2.hash(password, { type: argon2.argon2id });
 }
 
-async function verifyArgon2(password: string, hash: string): Promise<boolean> {
+async function verifyArgon2(hash: string, password: string): Promise<boolean> {
   return argon2.verify(hash, password);
 }
