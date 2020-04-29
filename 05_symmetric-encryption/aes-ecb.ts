@@ -1,7 +1,7 @@
 import * as aesjs from 'aes-js';
 
 const key = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-const text: string = '12345678901234561234567890123456';
+const text: string = '123456789012345600000000000000001234567890123456';
 console.log(`Text   : ${text}`);
 console.log(`Cipher : ${aesEcbEncrypt(key, text)}`);
 console.log(`Key    : [${key.toString()}]`);
