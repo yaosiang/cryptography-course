@@ -2,7 +2,7 @@ import * as argon2 from 'argon2';
 import { v4 } from 'uuid';
 
 const password: string = v4();
-const wrongPassword: string = password.substring(1);
+const wrongPassword: string = `@${password.substring(1)}`;
 let hash: string;
 let endTime: number;
 const startTime: number = new Date().getTime();
@@ -12,6 +12,7 @@ argon2id(password)
     endTime = new Date().getTime();
 
     console.log(`Password                     : ${password}`);
+    console.log(`Wrong Password               : ${wrongPassword}`);
     console.log(`Hash                         : ${hash}`);
     console.log(`Verify with Correct Password : ${await verifyArgon2(password, hash)}`);
     console.log(`Verify with Wrong Password   : ${await verifyArgon2(wrongPassword, hash)}`);

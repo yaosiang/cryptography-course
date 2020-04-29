@@ -2,7 +2,7 @@ import * as bcrypt from 'bcryptjs';
 import { v4 } from 'uuid';
 
 const password: string = v4();
-const wrongPassword: string = password.substring(1);
+const wrongPassword: string = `@${password.substring(1)}`;
 const rounds: number = 10;
 const salt: string = bcrypt.genSaltSync(rounds);
 const startTime: number = new Date().getTime();
@@ -10,6 +10,7 @@ const hash: string = bcryptSync(password, salt);
 const endTime: number = new Date().getTime();
 
 console.log(`Password                     : ${password}`);
+console.log(`Wrong Password               : ${wrongPassword}`);
 console.log(`Salt                         : ${salt}`);
 console.log(`Hash                         : ${bcryptSync(password, salt)}`);
 console.log(`Verify with Correct Password : ${verifyBcrypt(password, hash)}`);
