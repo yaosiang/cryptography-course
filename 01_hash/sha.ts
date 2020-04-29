@@ -2,12 +2,13 @@ import { get } from 'fast-levenshtein';
 import JsSHA from 'jssha';
 import { v4 } from 'uuid';
 
+const data: string = v4();
+
 demo1();
 demo2();
 
 // 如何用依賴套件計算各種 SHA 值
 function demo1(): void {
-  const data: string = v4();
   console.log(`Text     : ${data}`);
   console.log(`SHA-1    : ${sha1(data)}`);
   console.log(`SHA2-256 : ${sha256(data)}`);
@@ -18,7 +19,6 @@ function demo1(): void {
 
 // 些微的輸入訊息變化，產生的 SHA 值會有很大的差異
 function demo2(): void {
-  const data: string = v4();
   const modifiedData: string = `@${data.substring(1)}`;
   console.log(`Text             : ${data}`);
   console.log(`SHA2-256         : ${sha256(data)}`);
