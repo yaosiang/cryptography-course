@@ -2,7 +2,7 @@ import * as aesjs from 'aes-js';
 
 const key = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 const iv  = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-const text: string = '12345678901234561234567890123456';
+const text: string = '123456789012345612345678901234561234567890123456';
 
 console.log(`Text   : ${text}`);
 console.log(`Cipher : ${aesCbcEncrypt(key, iv, text)}`);
