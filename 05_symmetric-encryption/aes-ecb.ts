@@ -7,6 +7,9 @@ console.log(`Cipher : ${aesEcbEncrypt(key, text)}`);
 console.log(`Key    : [${key.toString()}]`);
 console.log(aesEcbDecrypt(key, aesEcbEncrypt(key, text)) === text);
 
+// 如何讓以下的程式印出 true？
+// console.log(aesEcbDecrypt(key, '') === '123456789012345612345678901234561234567890123456')
+
 function aesEcbEncrypt(key: number[], text: string): string {
   const textBytes: Uint8Array = aesjs.utils.utf8.toBytes(text);
 
