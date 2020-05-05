@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 
 const bits: number = 2048;
 const keyPair: pki.rsa.KeyPair = pki.rsa.generateKeyPair({ bits: bits });
+const randomKeyPair: pki.rsa.KeyPair = pki.rsa.generateKeyPair({ bits: bits });
 const data: string = v4();
 const longData: string = data.repeat(5) + '0000000000000000000000000000000000';
 console.log(`PCKS#8:`);
@@ -11,6 +12,7 @@ console.log(`${keyToPem(keyPair)}`);
 console.log(`Text         : ${data}`)
 console.log(`Encrypt Text : ${rsaOaepEncrypt(keyPair.publicKey, data)}`);
 console.log(`Decrypt Text : ${rsaOaepDecrypt(keyPair.privateKey, rsaOaepEncrypt(keyPair.publicKey, data))}`);
+//console.log(`Decrypt using wrong key : ${rsaOaepDecrypt(randomKeyPair.privateKey, rsaOaepEncrypt(keyPair.publicKey, data))}`)
 
 console.log();
 
