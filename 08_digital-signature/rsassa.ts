@@ -9,10 +9,25 @@ const digest: forge.Bytes = md.digest().bytes();
 
 // sign data with a private key and output DigestInfo DER-encoded bytes
 // (defaults to RSASSA PKCS#1 v1.5)
-const rsassa: forge.Bytes = keyPair.privateKey.sign(md);
-console.log(`Signature     : ${forge.util.bytesToHex(rsassa)}`);
+const signature: forge.Bytes = keyPair.privateKey.sign(md);
+console.log(`Signature     : ${forge.util.bytesToHex(signature)}`);
 
 // verify data with a public key
 // (defaults to RSASSA PKCS#1 v1.5)
-const verified: boolean = keyPair.publicKey.verify(digest, rsassa);
-console.log(`Verify Result : ${verified}`);
+try {
+  const verified: boolean = keyPair.publicKey.verify(digest, signature);
+  console.log(`Verify Result : ${verified}`);
+} catch (error) {
+  console.error(error);
+}
+
+console.log();
+
+const modifiedSignature: string = `@${signature.substring(1)}`;
+console.log(`Modified Signature : ${forge.util.bytesToHex(modifiedSignature)}`);
+try {
+  const verified: boolean = keyPair.publicKey.verify(digest, modifiedSignature);
+  console.log(`Verify Result     : ${verified}`);
+} catch (error) {
+  console.error(error);
+}

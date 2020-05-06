@@ -13,7 +13,7 @@ encryptMsgForA(data).then(() => {
   });
 });
 
-  async function encrypt(publicKey: Buffer, text: string): Promise<Ecies> {
+async function encrypt(publicKey: Buffer, text: string): Promise<Ecies> {
   return await eccrypto.encrypt(publicKey, Buffer.from(text));
 }
 

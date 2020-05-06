@@ -9,12 +9,25 @@ const data = v4();
 const digest: Buffer = crypto.createHash("sha256").update(data).digest();
 
 eccrypto.sign(privateKey, digest)
-  .then((signature: Buffer) => {
+  .then(async (signature: Buffer) => {
     console.log(`Text      : ${data}`);
     console.log(`Digest    : ${digest.toString('hex')}`)
-    console.log(`Signature : ${signature.toString('hex')}`);
-    // @ts-ignore
-    eccrypto.verify(publicKey, digest, signature)
-      .then(() => console.log("Signature is OK"))
-      .catch((error: Error) => console.log("Signature is BAD"));
+    try {
+      console.log(`Signature : ${signature.toString('hex')}`);
+      // @ts-ignore
+      await eccrypto.verify(publicKey, digest, signature);
+      console.log("Signature is OK")
+    } catch (error) {
+      console.log("Signature is BAD")
+    }
+
+    try {
+      const modifiedSignature: Buffer = signature.reverse();
+      console.log(`Modified Signature : ${modifiedSignature.toString('hex')}`);
+      // @ts-ignore
+      await eccrypto.verify(publicKey, digest, modifiedSignature);
+      console.log("Signature is OK")
+    } catch (error) {
+      console.log("Signature is BAD")
+    }
   });
