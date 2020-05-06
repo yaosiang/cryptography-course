@@ -1,13 +1,14 @@
 import * as crypto from 'crypto';
 import * as assert from 'assert';
 
-const alice: crypto.DiffieHellman = crypto.createDiffieHellman(8);
+const alice: crypto.DiffieHellman = crypto.createDiffieHellman(2);
 const primeFromAlice: string = alice.getPrime('hex');
+const generatorFromAlice: string = alice.getGenerator('hex');
 const keyFromAlice = alice.generateKeys('hex');
 console.log('Key Exchange Agreements for Alice:');
 logDetails(alice);
 
-const bob = crypto.createDiffieHellman(primeFromAlice, 'hex');
+const bob = crypto.createDiffieHellman(primeFromAlice, 'hex', generatorFromAlice, 'hex');
 const keyFromBob = bob.generateKeys('hex');
 console.log('Key Exchange Agreements for Bob:');
 logDetails(bob);
