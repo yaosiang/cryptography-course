@@ -1,7 +1,7 @@
 import * as crypto from 'crypto';
 import * as assert from 'assert';
 
-const alice: crypto.DiffieHellman = crypto.createDiffieHellman(2);
+const alice: crypto.DiffieHellman = crypto.createDiffieHellman(8);
 const primeFromAlice: string = alice.getPrime('hex');
 const generatorFromAlice: string = alice.getGenerator('hex');
 const keyFromAlice = alice.generateKeys('hex');
