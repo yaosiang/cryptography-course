@@ -17,7 +17,7 @@ const jwe: string = encrypt(JSON.stringify(payload), publicKey);
 console.log(`JWS                     : ${jwe}`);
 console.log(`Verify with correct key : ${decrypt(jwe, privateKey)}`);
 console.log(`Verify with wrong key   : ${decrypt(jwe, anotherPrivateKey)}`);
-console.log(`Verify with wrong jws   : ${decrypt(jwe.substring(1), anotherPrivateKey)}`);
+console.log(`Verify with wrong jws   : ${decrypt(jwe.substring(1), privateKey)}`);
 
 function encrypt(payload: string, key: JWK.Key): string {
   return JWE.encrypt(payload, key, { 'typ': 'JWT'});
