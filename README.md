@@ -68,4 +68,3 @@
 
 ### 其他應用
 - One Time Password 是什麼？
-- End-to-End Encryption 是怎麼一回事？
