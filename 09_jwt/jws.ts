@@ -17,10 +17,10 @@ const jws: string = sign(payload, privateKey);
 console.log(`JWS                     : ${jws}`);
 console.log(`Verify with correct key : ${verify(jws, publicKey)}`);
 console.log(`Verify with wrong key   : ${verify(jws, anotherPublicKey)}`);
-console.log(`Verify with wrong jws   : ${verify(jws.substring(1), anotherPublicKey)}`);
+console.log(`Verify with wrong jws   : ${verify(jws.substring(1), publicKey)}`);
 
 function sign(payload: object, key: JWK.Key): string {
-  return JWS.sign(payload, key, { 'typ': 'JWT'});
+  return JWS.sign(payload, key, { 'typ': 'JWT', 'kid': key.kid });
 }
 
 function verify(jws: string, key: JWK.Key): boolean {
