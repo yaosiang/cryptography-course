@@ -14,13 +14,13 @@ const payload: object = {
 };
 const jwe: string = encrypt(JSON.stringify(payload), publicKey);
 
-console.log(`JWS                     : ${jwe}`);
-console.log(`Verify with correct key : ${decrypt(jwe, privateKey)}`);
-console.log(`Verify with wrong key   : ${decrypt(jwe, anotherPrivateKey)}`);
-console.log(`Verify with wrong jws   : ${decrypt(jwe.substring(1), privateKey)}`);
+console.log(`JWE                     : ${jwe}`);
+console.log(`Decrypt with correct key : ${decrypt(jwe, privateKey)}`);
+console.log(`Decrypt with wrong key   : ${decrypt(jwe, anotherPrivateKey)}`);
+console.log(`Decrypt with wrong jws   : ${decrypt(jwe.substring(1), privateKey)}`);
 
 function encrypt(payload: string, key: JWK.Key): string {
-  return JWE.encrypt(payload, key, { 'typ': 'JWT'});
+  return JWE.encrypt(payload, key, { 'typ': 'JWT', 'kid': key.kid });
 }
 
 function decrypt(jwe: string, key: JWK.Key): string {
