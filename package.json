@@ -1,25 +1,14 @@
 {
   "name": "cryptography-course",
   "version": "1.0.0",
-  "description": "Sample code for cryptography course",
-  "main": "index.js",
   "private": true,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Yao-Siang Su",
+  "description": "Sample code for cryptography course",
   "license": "MIT",
-  "devDependencies": {
-    "@types/aes-js": "^3.1.1",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/eccrypto": "^1.1.1",
-    "@types/fast-levenshtein": "0.0.1",
-    "@types/mersenne-twister": "^1.1.2",
-    "@types/node": "^12.12.38",
-    "@types/node-forge": "^0.9.3",
-    "@types/uuid": "^7.0.3",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+  "author": "Yao-Siang Su",
+  "main": "index.js",
+  "scripts": {
+    "sort-package.json": "npx sort-package-json ./package.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "aes-js": "^3.1.2",
@@ -27,10 +16,27 @@
     "bcryptjs": "^2.4.3",
     "eccrypto": "^1.1.3",
     "fast-levenshtein": "^2.0.6",
+    "jose": "^1.27.0",
     "jssha": "^3.1.0",
     "mersenne-twister": "^1.1.0",
     "node-forge": "^0.9.1",
+    "otplib": "^12.0.1",
+    "qrcode": "^1.4.4",
     "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/aes-js": "^3.1.1",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/eccrypto": "^1.1.1",
+    "@types/fast-levenshtein": "0.0.1",
+    "@types/mersenne-twister": "^1.1.2",
+    "@types/node": "^12.12.39",
+    "@types/node-forge": "^0.9.3",
+    "@types/qrcode": "^1.3.4",
+    "@types/uuid": "^7.0.3",
+    "sort-package-json": "^1.42.2",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">= 12.0.0"
